@@ -8,10 +8,16 @@
   </head>
   <body ng-app='myApp'>
     <div ng-controller='loginPageController'>
-        <input type="button" ng-click="viewItems" value="View Items">
+
+
         <input type="button" ng-click="logIn()" value="Log In">
+      
+        <ul>
+          <li><a href="#home"> Home </a></li>
+          <li><a href="#view"> View </a></li>
+        </ul>
 
-
-    </div>
+        <main ng-view></main>
+    </main>
   </body>
 </html>
