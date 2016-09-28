@@ -2,9 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="scripts/clientscript.js" charset="utf-8"></script>
     <title>Shelf of Things</title>
   </head>
-  <body>
-    Test
+  <body ng-app='myApp'>
+    <div ng-controller='loginPageController'>
+        <input type="button" ng-click="viewItems" value="View Items">
+        <input type="button" ng-click="logIn()" value="Log In">
+
+
+    </div>
   </body>
 </html>
