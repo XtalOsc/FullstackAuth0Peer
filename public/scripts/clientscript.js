@@ -23,20 +23,6 @@ lock.show(function(err,profile,token){
 
 //on log in switch to page 2
 //if view items clicked hide add new item form
+
+
 }]);//end loginPageController
-
-myApp.config(['$routeProvider', function($routeProvider){
-$routeProvider.
-when('/home',{
-  templateUrl:'/partials/home.html',
-  controller: 'homeController'
-}).
-when('/view',{
-templateUrl: '/partials/view.html',
-controller: 'viewController'
-}).
-otherwise({
-  redirectTo:'/home'
-});
-
-}]);
