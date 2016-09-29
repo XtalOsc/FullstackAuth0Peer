@@ -8,12 +8,19 @@
   </head>
   <body ng-app='myApp'>
     <div ng-controller='loginPageController'>
-
-
         <input type="button" ng-click="logIn()" value="Log In">
-        <div ng-repeat=""></div>
 
-        <main ng-view></main>
+
+
+      <div ng-show="inputForm" >
+          </div>
+        <form ng-model="inputForm">
+          <input type="text" ng-model="itemName" value="" placeholder="Name">
+          <input type="text" ng-model="itemDescription" value="" placeholder="Description">
+          <input type="text" ng-model="itemOwner" value="" placeholder="Owner">
+          <input type="text" ng-model="itemURL" value="" placeholder="Image URL">
+
+    </form>
     </main>
   </body>
 </html>

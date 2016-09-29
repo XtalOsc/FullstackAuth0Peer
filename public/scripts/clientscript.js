@@ -16,13 +16,17 @@ lock.show(function(err,profile,token){
   }else {
     localStorage.setItem('userToken', token);
     localStorage.setitem('userProfile', JSON.stringify(profile));
+    
     location.reload();
+
   }//end else
 });//end lock.show function
 };//end login scope function
 
-//on log in switch to page 2
-//if view items clicked hide add new item form
+
+//on log in show form to add item / delete button
+// http call to get items from DB
+//
 
 
 }]);//end loginPageController
