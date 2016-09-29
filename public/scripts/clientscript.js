@@ -80,10 +80,10 @@ $scope.addItem = function(){
     data: newItem
   }).then(function(response){
     console.log('returned from server ', response);
-$scope.displayName= response.data.name;
-$scope.displayDescription= response.data.description;
-$scope.displayOwner= response.data.owner;
-$scope.displayImageURL= response.data.imageURL;
+    $scope.displayName= response.data.name;
+    $scope.displayDescription= response.data.description;
+    $scope.displayOwner= response.data.owner;
+    $scope.displayImageURL= response.data.imageURL;
 
     //empty input fields
     $scope.itemName="";
@@ -93,6 +93,16 @@ $scope.displayImageURL= response.data.imageURL;
   })//end return
 }//end addItem
 
+
+$scope.displayItem=function(){
+  $http({
+    method: 'GET',
+    url: '/viewItem'
+  }).then(function(response){
+    console.log('returned from server ', response);
+    $scope.allItems = response.data;
+  })//end return
+};//end displayItem
 }]);//end loginPageController
 
 var emptyLocalStorage = function(){

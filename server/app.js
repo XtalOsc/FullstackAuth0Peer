@@ -6,7 +6,7 @@ var path = require('path');
 
 app.use(bodyParser.json());
 
-var portDecision = process.env.PORT || 3030;
+var portDecision = process.env.PORT || 8080;
 
 var connection = require('../modules/connection');
 mongoose.connect(connection);
@@ -22,27 +22,7 @@ app.get('/', function(req,res){
   res.sendFile(path.resolve('public/index.html'));
 });
 
-// app.get('/test', function(req,res){
-// console.log('test route');
-//
-// var testy = new Items({
-// name: 'rubberDucky',
-// description: 'yellow duck',
-// owner: 'Dev',
-// imageURL: String
-// });//end testy object
-// testy.save(function(err){
-//   if (err) {
-//     console.log(err);
-//     res.sendStatus(500);
-//   }else {
-//     console.log('User saved successfully');
-//     res.sendStatus(200);
-//   }
-// });
-// });//end app.get test
-
-app.get('/', function(req,res){
+app.get('/viewItem', function(req,res){
   console.log('in get');
   Items.find({}, function (err,results){
     if (err){

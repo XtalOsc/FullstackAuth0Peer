@@ -32,11 +32,19 @@
     </div>
 
     <h2>List of items on shelf</h2>
+<div ng-init="displayItem()"></div>
+    <p ng-repeat='item in allItems'>
 
+      {{item.name}}
+      {{item.description}}
+      {{item.owner}}
+      <img src="{{item.imageURL}}">
+    </p>
+<!--
     <h3>{{displayName}}
     {{displayDescription}}
     {{displayOwner}}
-    {{displayImageURL}}</h3>
+    {{displayImageURL}}</h3> -->
 
   </div>
 </body>
