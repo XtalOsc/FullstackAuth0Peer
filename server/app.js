@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var path = require('path');
 
+app.use(bodyParser.json());
+
 var portDecision = process.env.PORT || 3030;
 
 var connection = require('../modules/connection');
@@ -20,24 +22,66 @@ app.get('/', function(req,res){
   res.sendFile(path.resolve('public/index.html'));
 });
 
-app.get('/test', function(req,res){
-console.log('test route');
+// app.get('/test', function(req,res){
+// console.log('test route');
+//
+// var testy = new Items({
+// name: 'rubberDucky',
+// description: 'yellow duck',
+// owner: 'Dev',
+// imageURL: String
+// });//end testy object
+// testy.save(function(err){
+//   if (err) {
+//     console.log(err);
+//     res.sendStatus(500);
+//   }else {
+//     console.log('User saved successfully');
+//     res.sendStatus(200);
+//   }
+// });
+// });//end app.get test
 
-var testy = new Items({
-name: 'rubberDucky',
-description: 'yellow duck',
-owner: 'Dev',
-imageURL: String
-});//end testy object
-testy.save(function(err){
-  if (err) {
-    console.log(err);
-    res.sendStatus(500);
-  }else {
-    console.log('User saved successfully');
-    res.sendStatus(200);
-  }
-});
-});//end app.get test
+app.get('/', function(req,res){
+  console.log('in get');
+  Items.find({}, function (err,results){
+    if (err){
+      console.log('error:',err);
+      res.sendStatus(500);
+    }//end if
+    else{
+      console.log('shelfResults:',results);
+      res.send(results);
+    }//end else
+  });//end find
+});//end get
+
+app.post('/addItem', function(req,res){
+  var sentData = req.body;
+  console.log('req.body',req.body);
+  console.log('in post',sentData);
+  var newItem = new Items({
+    name: sentData.name,
+    description: sentData.description,
+    owner: sentData.owner,
+    imageURL: sentData.imageURL
+  });//end test
+  newItem.save(function(err){
+    if (err){
+      console.log('error:',err);
+      res.sendStatus(500);
+    }//end if
+    else{
+      console.log('success',newItem);
+      res.send(newItem);
+    }//end else
+  });//end save
+});//end post
+
+
+
+
+
+
 
 app.use(express.static('public'));

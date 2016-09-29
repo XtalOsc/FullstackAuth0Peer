@@ -36,7 +36,6 @@ myApp.controller('loginPageController', ['$scope', '$http', function($scope,$htt
         localStorage.setItem( 'userToken', token );
         // save user profile to localStorage
         localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
-        // reload page because dirtyhaxorz
         location.reload();
       } // end no error
     }); //end lock.show
@@ -55,13 +54,46 @@ $scope.logOut = function(){
        $scope.showUser = false;
      }
    })
- }; // end scope.logIn
+ }; // end scope.logOut
 
  // run init on controller load
  $scope.init();
+//
+//
+// myApp.controller("addController",['$scope', '$http', function($scope, $http){
+// console.log('in addController');
+//
+// }]);//end addController
+
+$scope.addItem = function(){
+  var newItem={
+
+    name: $scope.itemName,
+    description: $scope.itemDescription,
+    owner: $scope.itemOwner,
+    imageURL: $scope.itemURL
+  }//end newItem
+  console.log('newItem',newItem);
+  $http({
+    method: 'POST',
+    url: '/addItem',
+    data: newItem
+  }).then(function(response){
+    console.log('returned from server ', response);
+$scope.displayName= response.data.name;
+$scope.displayDescription= response.data.description;
+$scope.displayOwner= response.data.owner;
+$scope.displayImageURL= response.data.imageURL;
+
+    //empty input fields
+    $scope.itemName="";
+    $scope.itemDescription="";
+    $scope.itemOwner="";
+    $scope.itemURL="";
+  })//end return
+}//end addItem
 
 }]);//end loginPageController
-
 
 var emptyLocalStorage = function(){
  localStorage.removeItem( 'userProfile' );

@@ -11,21 +11,33 @@
 
   <div ng-controller='loginPageController'>
     <div ng-show="showUser">
+      <input type="button" ng-click="logOut()" value="Log Out">
+<!-- <div ng-controller='addController'> -->
       <form ng-model="inputForm">
         <input type="text" ng-model="itemName" value="" placeholder="Name">
         <input type="text" ng-model="itemDescription" value="" placeholder="Description">
         <input type="text" ng-model="itemOwner" value="" placeholder="Owner">
         <input type="text" ng-model="itemURL" value="" placeholder="Image URL">
+        <button ng-click="addItem()">Button!!!!</button>
 
-      </form>
-      <button>Button!!!!</button>
+
+
+  </form>
     </div>
+  <!-- </div> -->
 
     <div ng-hide="showUser">
       <input type="button" ng-click="logIn()" value="Log In">
       text
     </div>
-    
+
+    <h2>List of items on shelf</h2>
+
+    <h3>{{displayName}}
+    {{displayDescription}}
+    {{displayOwner}}
+    {{displayImageURL}}</h3>
+
   </div>
 </body>
 </html>
