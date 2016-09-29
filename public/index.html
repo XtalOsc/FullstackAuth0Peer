@@ -5,47 +5,35 @@
   <script src="https://cdn.auth0.com/js/lock-8.1.min.js" charset="utf-8"></script>
   <script src="vendors/angular.min.js" charset="utf-8"></script>
   <script src="scripts/clientscript.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="styles/style.css" charset="utf-8">
   <title>Shelf of Things</title>
 </head>
 <body ng-app='myApp'>
 
   <div ng-controller='loginPageController'>
+
     <div ng-show="showUser">
       <input type="button" ng-click="logOut()" value="Log Out">
-<!-- <div ng-controller='addController'> -->
       <form ng-model="inputForm">
         <input type="text" ng-model="itemName" value="" placeholder="Name">
         <input type="text" ng-model="itemDescription" value="" placeholder="Description">
         <input type="text" ng-model="itemOwner" value="" placeholder="Owner">
         <input type="text" ng-model="itemURL" value="" placeholder="Image URL">
         <button ng-click="addItem()">Button!!!!</button>
-
-
-
-  </form>
+      </form>
     </div>
-  <!-- </div> -->
 
     <div ng-hide="showUser">
       <input type="button" ng-click="logIn()" value="Log In">
-      text
     </div>
-
     <h2>List of items on shelf</h2>
-<div ng-init="displayItem()"></div>
+    <div ng-init="displayItem()"></div>
     <p ng-repeat='item in allItems'>
-
-      {{item.name}}
-      {{item.description}}
-      {{item.owner}}
       <img src="{{item.imageURL}}">
+      Name: {{item.name}}
+      Description: {{item.description}}
+      Owner: {{item.owner}}
     </p>
-<!--
-    <h3>{{displayName}}
-    {{displayDescription}}
-    {{displayOwner}}
-    {{displayImageURL}}</h3> -->
-
   </div>
 </body>
 </html>

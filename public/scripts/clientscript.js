@@ -1,7 +1,7 @@
 console.log('sourced');
 
 var lock = new Auth0Lock('AZbjJYNI6Xex9lDI8wvgCCdx9NiqHPl8', 'wibajohnson.auth0.com');
-var logOutURL = 'blank';
+var logOutURL = 'https://wibajohnson.auth0.com/v2/logout';
 
 var myApp = angular.module('myApp', []);
 
@@ -45,7 +45,7 @@ $scope.logOut = function(){
    // call our logOutUrl
    $http({
      method:'GET',
-     url: logOutUrl,
+     url: logOutURL
    }).then( function( data ){
      // if logged out OK
      if( data.data == 'OK' ){
