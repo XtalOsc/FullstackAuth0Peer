@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-var portDecision = process.env.PORT || 6789;
+var portDecision = process.env.PORT || 3030;
 
 var connection = require('../modules/connection');
 mongoose.connect(connection);
